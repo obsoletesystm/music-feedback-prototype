@@ -1,0 +1,10 @@
+@import "../../shared.scss";
+
+.line {
+    border-bottom: 3px solid white;
+    height: 0;
+
+    @include modifier('blue') {
+        border-color: $standard-blue;
+    }
+}
