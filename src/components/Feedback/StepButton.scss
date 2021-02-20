@@ -1,0 +1,31 @@
+@import "../../shared.scss";
+
+.step-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    @include element('number') {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        border: 1px solid white;
+        font-size: 1.1rem;
+
+        @include modifier('current') {
+            background-color: $standard-blue;
+            border-color: $standard-blue;
+        }
+
+        @include modifier('compelete') {
+            background-color: $complete-green;
+            border-color: $complete-green;
+        }
+    }
+
+    @include element('name') {
+        margin: 0 5px;
+    }
+}
