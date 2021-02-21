@@ -1,0 +1,109 @@
+@import "../../../shared";
+
+.order-item {
+    color: black;
+    border-bottom: 1px solid $grey-text;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    @include element('header') {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    @include element('quantity-picker') {
+        display: flex;
+        flex-direction: row;
+        
+        @include element('subtract-button') {
+            @include roundButton(20px);
+            background-color: lightgray;
+            margin-right: 25px;
+        }
+        @include element('add-button') {
+            @include roundButton(20px);
+            background-color: $standard-blue;
+            color: white;
+            margin-left: 25px;
+        }
+    }
+
+    @include element('remove') {
+        font-size: 0.8rem;
+        margin: 10px 0;
+        color: grey;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    @include element('upgrade') {
+        display: flex;
+        flex-direction: column;
+
+        @include element('buttons') {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            @include element('button') {
+                margin: 5px;
+                padding: 10px 30px;
+                border-radius: 8px;
+                background-color: $standard-blue;
+                font-size: 0.8rem;
+                color: white;
+                cursor: pointer;
+                user-select: none;
+            }
+        }
+    }
+
+    @include element('completion') {
+        margin-top: 30px;
+
+        @include element('calendar') {
+            margin: 20px 0;
+            width: 150px;
+
+            @include element('top') {
+                border-radius: 15px 15px 0 0;
+                border: 1px solid $standard-blue;
+                background-color: $standard-blue;
+                color: white;
+                font-size: 0.8rem;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            @include element('bottom') {
+                border: 1px solid $standard-blue;
+                border-radius: 0 0 15px 15px;
+                padding: 10px 0;
+                text-align: center;
+                font-weight: bold;
+
+                @include element('month') {
+                    font-size: 0.8rem;
+                }
+
+                @include element('day') {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        @include element('timer') {
+            font-size: 0.8rem;
+        }
+    }
+}

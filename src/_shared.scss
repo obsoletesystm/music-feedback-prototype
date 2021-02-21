@@ -10,6 +10,17 @@
   }
 }
 
+@mixin roundButton($size) {
+  display: flex;
+  border-radius: $size;
+  height: $size;
+  width: $size;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
 $navbar-height: 40px;
 $grey-text: #757575;
 $standard-blue: #42A5F5;

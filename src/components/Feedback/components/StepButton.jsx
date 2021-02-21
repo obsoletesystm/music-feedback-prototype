@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./StepButton.scss";
-import Icon from "../Icon";
+import Icon from "../../Icon";
 
 const StepButton = ({ step, name, status, onClick }) => {
   const getNumberModifier = () => {

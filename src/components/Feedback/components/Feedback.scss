@@ -1,0 +1,82 @@
+@import "../../../shared.scss";
+
+$feedback-spacer-height: 100px;
+
+.feedback {
+    padding-top: $feedback-spacer-height;
+    height: calc(100% - #{$feedback-spacer-height} - #{$navbar-height});
+    width: 100%;
+
+    @include element('header') {
+        display: flex;
+        flex-direction: row;
+        @include element('details') {
+            font-size: 2.4rem;
+            padding-right: 10%;
+        }
+
+        @include element('line') {
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+    }
+
+    @include element('line') {
+        margin: 20px 0 40px;
+    }
+
+    @include element('body') {
+        display: flex;
+        flex-direction: row;
+
+        @include element('form') {
+            background-color: white;
+            border-radius: 15px;
+            width: calc(70% - 80px);
+            padding: 40px;
+        }
+
+        @include element('summary') {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            color: white;
+            padding: 0 20px;
+    
+            @include element('heading') {
+                font-weight: bold;
+                font-size: 1.3rem;
+                padding-bottom: 20px;
+            }
+    
+            @include element('item') {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+    
+                @include modifier('total') {
+                    font-weight: bold;
+                }
+
+                @include element('currency') {
+                    font-size: 0.8rem;
+                }
+            }
+
+            @include element('line') {
+                margin: 20px 0;
+            }
+    
+            @include element('button') {
+                margin-top: 20px;
+                padding: 10px;
+                border-radius: 10px;
+                background-color: $standard-blue;
+                width: 100%;
+                text-align: center;
+                cursor: pointer;
+            }
+        }
+    }
+}

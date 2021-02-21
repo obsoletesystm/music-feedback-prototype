@@ -1,8 +1,12 @@
-import { createStore, combineReducers } from "redux";
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+
 import username from "./modules/username";
+import orderDetails from "./modules/orderDetails";
 
 const combinedReducers = combineReducers({
-    username,
+  username,
+  orderDetails,
 });
 
-export default createStore(combinedReducers);
+export default createStore(combinedReducers, applyMiddleware(thunk));
