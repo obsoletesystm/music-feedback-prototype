@@ -5,7 +5,7 @@ import "./Creditcard.scss";
 const Creditcard = () => (
   <div className="creditcard">
     <div className="creditcard__box">
-      <b>CARD INFORMATION</b>
+      <span className="creditcard__box__header">CARD INFORMATION</span>
       <span className="creditcard__box__message">
         We accept the following cards.
       </span>
@@ -43,7 +43,7 @@ const Creditcard = () => (
       </div>
     </div>
     <div className="creditcard__box">
-      <b>BILLING ADDRESS</b>
+      <span className="creditcard__box__header">BILLING ADDRESS</span>
       <div className="creditcard__box__row">
         <div className="creditcard__box__row__input">
           <span className="creditcard__box__row__input__label">First Name</span>

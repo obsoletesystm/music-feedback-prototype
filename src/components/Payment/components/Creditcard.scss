@@ -18,14 +18,20 @@
             margin-bottom: unset;
         }
 
+        @include element('header') {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
         @include element('message') {
             font-size: 0.9rem;
-            margin: 10px 0;
+            margin-bottom: 10px;
         }
 
         @include element('row') {
             display: flex;
             flex-direction: row;
+            margin-top: 5px;
 
             @include element('input') {
                 @include stacked;
