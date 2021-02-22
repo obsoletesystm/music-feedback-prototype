@@ -1,4 +1,4 @@
-const reducer = (state = 2, action) => {
+const reducer = (state = 1, action) => {
   switch (action.type) {
     case "SET_STEP": {
       return action.step;

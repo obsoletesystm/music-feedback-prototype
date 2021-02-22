@@ -18,7 +18,7 @@ module.exports = {
       },
       {
         test: /\.png$/,
-        use: ["file-loader"],
+        loader: "file-loader",
         options: {
           publicPath: "public",
         },
