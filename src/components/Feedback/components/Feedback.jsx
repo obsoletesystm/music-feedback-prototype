@@ -2,40 +2,56 @@ import React from "react";
 import PropTypes from "prop-types";
 import StepButton from "./StepButton";
 import OrderDetails from "../../OrderDetails";
+import Payment from "../../Payment";
 import Line from "./Line";
 import "./Feedback.scss";
 
-const Feedback = ({
-  basePrice,
-  expeditedPrice,
-  feedbackQty,
-  expeditedQty,
-  subtotal,
-  taxRate,
-}) => {
+const Feedback = ({ step, setStep, subtotal, taxRate }) => {
   const taxes = subtotal * taxRate;
+
+  const summaryButtonText =
+    step === 1 ? "Continue to Payment" : "Pay & Complete";
+
+  const renderStep = () => {
+    let result = <OrderDetails />;
+
+    if (step === 2) {
+      result = <Payment />;
+    } else if (step === 3) {
+      result = null;
+    }
+
+    return result;
+  };
 
   const renderContent = () => (
     <div className="feedback">
       <div className="feedback__header">
         <span className="feedback__header__details">ORDER DETAILS</span>
-        <StepButton step={1} name="Details" status="current" />
+        <StepButton
+          stepNumber={1}
+          name="Details"
+          currentStep={step}
+          onClick={step === 2 ? () => setStep(1) : () => {}}
+        />
         <div className="feedback__header__line">
           <Line length="25px" />
         </div>
-        <StepButton step={2} name="Pay & Complete" />
+        <StepButton stepNumber={2} name="Pay & Complete" currentStep={step} />
         <div className="feedback__header__line">
           <Line length="25px" />
         </div>
-        <StepButton step={3} name="Upload Your Songs" />
+        <StepButton
+          stepNumber={3}
+          name="Upload Your Songs"
+          currentStep={step}
+        />
       </div>
       <div className="feedback__line">
-        <Line blue length="75px" />
+        <Line blue length="100px" />
       </div>
       <div className="feedback__body">
-        <div className="feedback__body__form">
-          <OrderDetails />
-        </div>
+        <div className="feedback__body__form">{renderStep()}</div>
         <div className="feedback__body__summary">
           <div className="feedback__body__summary__heading">ORDER SUMMARY</div>
           <div className="feedback__body__summary__item">
@@ -59,8 +75,11 @@ const Feedback = ({
               </span>
             </span>
           </div>
-          <div className="feedback__body__summary__button">
-            Continue to Payment
+          <div
+            className="feedback__body__summary__button"
+            onClick={() => setStep(step + 1)}
+          >
+            {summaryButtonText}
           </div>
         </div>
       </div>
@@ -71,10 +90,8 @@ const Feedback = ({
 };
 
 Feedback.propTypes = {
-  basePrice: PropTypes.number.isRequired,
-  expeditedPrice: PropTypes.number.isRequired,
-  feedbackQty: PropTypes.number.isRequired,
-  expeditedQty: PropTypes.number.isRequired,
+  step: PropTypes.number.isRequired,
+  setStep: PropTypes.func.isRequired,
   subtotal: PropTypes.number.isRequired,
   taxRate: PropTypes.number.isRequired,
 };

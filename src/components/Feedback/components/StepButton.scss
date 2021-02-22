@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    cursor: pointer;
 
     @include element('number') {
         display: flex;
@@ -20,14 +21,15 @@
             border-color: $standard-blue;
         }
 
-        @include modifier('compelete') {
+        @include modifier('complete') {
             background-color: $complete-green;
             border-color: $complete-green;
-            cursor: pointer;
+            color: black;
         }
     }
 
     @include element('name') {
         margin: 0 5px;
+        user-select: none;
     }
 }

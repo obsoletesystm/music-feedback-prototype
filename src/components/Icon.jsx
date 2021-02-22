@@ -1,23 +1,23 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import "./Icon.scss";
 
-const Icon = ({ icon, label }) => (
-  <div className="icon">
-    <span className="material-icons material-icons.md-light">
-      {icon}
-    </span>
+const Icon = ({ icon, label, dark }) => (
+  <div className={`icon ${label ? "icon--with-label" : ""}`}>
+    <span className={`material-icons ${dark ? "icon--dark" : ""}`}>{icon}</span>
     {label && <span className="icon__label">{label}</span>}
   </div>
 );
 
 Icon.defaultProps = {
   label: null,
+  dark: false,
 };
 
 Icon.propTypes = {
   icon: PropTypes.string.isRequired,
   label: PropTypes.string,
+  dark: PropTypes.bool,
 };
 
 export default Icon;

@@ -39,4 +39,13 @@ const OrderDetails = ({
   return renderContent();
 };
 
+OrderDetails.propTypes = {
+  feedbacks: PropTypes.number.isRequired,
+  expeditedFeedbacks: PropTypes.number.isRequired,
+  basePrice: PropTypes.number.isRequired,
+  expeditedPrice: PropTypes.number.isRequired,
+  modifyQuantity: PropTypes.func.isRequired,
+  modifyExpedited: PropTypes.func.isRequired,
+};
+
 export default OrderDetails;

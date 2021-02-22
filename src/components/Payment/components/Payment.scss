@@ -1,0 +1,14 @@
+@import "../../../shared";
+
+.payment {
+    color: black;
+    @include element('full-line') {
+        border-bottom: 1px solid $grey-text;
+        margin: 30px -40px;
+    }
+
+    @include element('block') {
+        border: 1px solid $grey-text;
+        border-radius: 10px;
+    }
+}

@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./StepButton.scss";
 import Icon from "../../Icon";
+import "./StepButton.scss";
 
-const StepButton = ({ step, name, status, onClick }) => {
+const StepButton = ({ stepNumber, name, currentStep, onClick }) => {
   const getNumberModifier = () => {
     let modifier = "";
 
-    if (status === "current") {
+    if (stepNumber === currentStep) {
       modifier = "step-button__number--current";
-    } else if (status === "complete") {
+    } else if (stepNumber < currentStep) {
       modifier = "step-button__number--complete";
     }
     return modifier;
@@ -18,7 +18,7 @@ const StepButton = ({ step, name, status, onClick }) => {
   const renderContent = () => (
     <div className="step-button" onClick={onClick}>
       <div className={`step-button__number ${getNumberModifier()}`}>
-        {status === "complete" ? <Icon icon="checkmark" /> : step}
+        {stepNumber < currentStep ? <Icon icon="checkmark" /> : stepNumber}
       </div>
       <div className="step-button__name">{name}</div>
     </div>
@@ -28,14 +28,13 @@ const StepButton = ({ step, name, status, onClick }) => {
 };
 
 StepButton.defaultProps = {
-  status: "pending",
   onClick: () => {},
 };
 
 StepButton.propTypes = {
-  step: PropTypes.number.isRequired,
+  stepNumber: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  status: PropTypes.oneOf(["pending", "current", "complete"]),
+  currentStep: PropTypes.number.isRequired,
   onClick: PropTypes.func,
 };
 

@@ -1,12 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
-import username from "./modules/username";
 import orderDetails from "./modules/orderDetails";
+import step from "./modules/step";
+import username from "./modules/username";
 
 const combinedReducers = combineReducers({
-  username,
   orderDetails,
+  step,
+  username,
 });
 
 export default createStore(combinedReducers, applyMiddleware(thunk));
